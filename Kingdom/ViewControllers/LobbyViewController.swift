@@ -41,11 +41,17 @@ class LobbyViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
         
-        view.addAndCenter(views: [topLabel, startButton])
+        view.addAndCenter(views: [topLabel, playersLabel, startButton])
         topLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
-        topLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        startButton.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 200).isActive = true
-        startButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        topLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        playersLabel.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 60).isActive = true
+        playersLabel.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        
+        startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        startButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        startButton.isHidden = !isCurrentPlayerTheHost()
     }
     
     func showCancelWarning() {
@@ -78,7 +84,17 @@ class LobbyViewController: UIViewController {
         } else {
             label.text = Strings.waitingForHost
         }
-        
+        return label
+    }()
+    
+    lazy var playersLabel: UILabel = {
+        let label = UILabel()
+        var text = Strings.players + "(" + String(game.players.count) + "): "
+        for player in game.players {
+            text = text + player.name + ", "
+        }
+        label.text = text
+        label.numberOfLines = 0
         return label
     }()
     
@@ -100,5 +116,11 @@ class LobbyViewController: UIViewController {
             return
         }
         nav.pushViewController(GameViewController(game: game, currentPlayer: currentPlayer), animated: true)
+    }
+}
+
+extension LobbyViewController {
+    func isCurrentPlayerTheHost() -> Bool {
+        return game.host.name == currentPlayer.name
     }
 }
