@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-extension UIButton {
-    override open var isSelected: Bool {
-        didSet {
-            if self.isSelected {
-                self.backgroundColor = UIColor.gray
-            }
-            else {
-                self.backgroundColor = UIColor.blue
-            }
-        }
-    }
-}
+//extension UIButton {
+//    override open var isSelected: Bool {
+//        didSet {
+//            if self.isSelected {
+//                self.backgroundColor = UIColor.gray
+//            }
+//            else {
+//                self.backgroundColor = UIColor.blue
+//            }
+//        }
+//    }
+//}

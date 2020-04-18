@@ -15,15 +15,19 @@ protocol LobbyViewControllerDelegate: class {
 
 class LobbyViewController: UIViewController {
     
+    
     //MARK - properties
     let game: Game
     let currentPlayer: Player
     
+    weak var delegate: LobbyViewControllerDelegate?
+    
     
     // MARK - initializers
-    init(game: Game, currentPlayer: Player) {
+    init(game: Game, currentPlayer: Player, delegate: LobbyViewControllerDelegate) {
         self.game = game
         self.currentPlayer = currentPlayer
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -33,6 +37,8 @@ class LobbyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        
         view.backgroundColor = UIColor.white
         
         view.addAndCenter(views: [topLabel, startButton])
@@ -40,6 +46,25 @@ class LobbyViewController: UIViewController {
         topLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
         startButton.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 200).isActive = true
         startButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    }
+    
+    func showCancelWarning() {
+        let alert = UIAlertController(title: Strings.areYouSureToLeave, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Strings.yes, style: .default, handler: { [weak self] (alertAction) in
+            guard let delegate = self?.delegate else {
+                assertionFailure("lost delegate")
+                return
+            }
+            delegate.lobbyviewControllerDidFinish()
+        }))
+        alert.addAction(UIAlertAction(title: Strings.no, style: .cancel, handler: { (alertAction) in
+            alert.dismiss(animated: true, completion: {})
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    @objc func cancelButtonTapped() {
+        showCancelWarning()
     }
     
     lazy var topLabel: UILabel = {
@@ -70,7 +95,10 @@ class LobbyViewController: UIViewController {
     }
     
     func start(_ game: Game) {
-        present(UINavigationController(rootViewController: GameViewController(game: game, currentPlayer: currentPlayer)), animated: true) {}
+        guard let nav = navigationController else {
+            assertionFailure("where the nav at bro?")
+            return
+        }
+        nav.pushViewController(GameViewController(game: game, currentPlayer: currentPlayer), animated: true)
     }
-    
 }

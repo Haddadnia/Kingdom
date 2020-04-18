@@ -26,6 +26,10 @@ struct Strings {
     static let startGame = "Start game"
     static let submit = "Submit"
     
+    static let areYouSureToLeave = "Are you sure you want to leave this game?"
+    static let yes = "Yes"
+    static let no = "No"
+    
     
     //gameplay
     static let its = "it's"
@@ -56,6 +60,16 @@ struct Strings {
     static let samePlayers = "Same players"
     static let inviteMore = "Invite more people"
     
+    
+    // Directions
+    static let directions1 = "1. Start a new game or enter a code to join an existing one"
+    static let directions2 = "2. If you've started a new game, share your game code with others via text"
+    static let directions3 = "3. Everyone must enter a word, any word"
+    static let directions4 = "4. Once everyone has joined the game the host can start the game"
+    static let directions5 = "5. Everyone's words will be read 3 times in a row, then never repeated. It's your job to remember all of the words"
+    static let directions6 = "6. Players will then take turns guessing who submitted each word"
+    static let directions7 = "7. If you guess correctly, that person is now on your team. If they have other teammates, they are all part of your team"
+    static let directions8 = "8. Proceed like this until there is only 1 team left. The leader of that team is the winner"
     
     
 }

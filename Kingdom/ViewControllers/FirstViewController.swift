@@ -84,10 +84,16 @@ class FirstViewController: UIViewController {
         // HACKS
         let currentPlayer = Player(name: name, word: word)
 
-        present(UINavigationController(rootViewController: LobbyViewController(game: game, currentPlayer: currentPlayer)), animated: true) {}
+        present(UINavigationController(rootViewController: LobbyViewController(game: game, currentPlayer: currentPlayer, delegate: self)), animated: true) {}
     }
     
     
+}
+
+extension FirstViewController: LobbyViewControllerDelegate {
+    func lobbyviewControllerDidFinish() {
+        dismiss(animated: true) {}
+    }
 }
 
 
