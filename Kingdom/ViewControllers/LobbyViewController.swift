@@ -17,7 +17,7 @@ class LobbyViewController: UIViewController {
     
     
     //MARK - properties
-    let game: Game
+    var game: Game
     let currentPlayer: Player
     
     weak var delegate: LobbyViewControllerDelegate?
@@ -52,6 +52,14 @@ class LobbyViewController: UIViewController {
         startButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         startButton.isHidden = !isCurrentPlayerTheHost()
+        
+        reloadFrom(game: game)
+    }
+    
+    func reloadFrom(game: Game) {
+        self.game = game
+        setTopLabelText()
+        setPlayersLabelText()
     }
     
     func showCancelWarning() {
@@ -75,25 +83,12 @@ class LobbyViewController: UIViewController {
     
     lazy var topLabel: UILabel = {
         let label = UILabel()
-        if (game.host.name == currentPlayer.name) { //replace with a real check for me being host
-            if (game.players.count < 2) {
-                label.text = Strings.playerWarning
-            } else {
-                label.text = Strings.hostDirections
-            }
-        } else {
-            label.text = Strings.waitingForHost
-        }
         return label
     }()
     
+    
     lazy var playersLabel: UILabel = {
         let label = UILabel()
-        var text = Strings.players + "(" + String(game.players.count) + "): "
-        for player in game.players {
-            text = text + player.name + ", "
-        }
-        label.text = text
         label.numberOfLines = 0
         return label
     }()
@@ -119,8 +114,33 @@ class LobbyViewController: UIViewController {
     }
 }
 
+// Helper
 extension LobbyViewController {
     func isCurrentPlayerTheHost() -> Bool {
         return game.host.name == currentPlayer.name
     }
 }
+
+//MARK - text setting
+extension LobbyViewController {
+    func setTopLabelText() {
+        if (game.host.name == currentPlayer.name) { //replace with a real check for me being host
+            if (game.players.count < 2) {
+                topLabel.text = Strings.playerWarning
+            } else {
+                topLabel.text = Strings.hostDirections
+            }
+        } else {
+            topLabel.text = Strings.waitingForHost
+        }
+    }
+    
+    func setPlayersLabelText() {
+        var text = Strings.players + "(" + String(game.players.count) + "): "
+        for player in game.players {
+            text = text + player.name + ", "
+        }
+        playersLabel.text = text
+    }
+}
+

@@ -38,6 +38,7 @@ struct Strings {
     static let spaceToGuess = " to guess"
     static let yourWordIsSpace = "Your word is "
     static let yourTurn = "Your turn!"
+    static let notYourTurn = "It's not your turn!"
     static let yourTeammatesAre = "Your teammates are: "
     //tbd
     static let selectAPlayer = "Select a player"
@@ -56,7 +57,7 @@ struct Strings {
     static let youLose = "You lose!"
     static let betterLuckNextTime = "Better luck next time"
     
-    //post Gam
+    //post Game
     static let samePlayers = "Same players"
     static let inviteMore = "Invite more people"
     

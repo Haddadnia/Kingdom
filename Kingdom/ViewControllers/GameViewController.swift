@@ -40,7 +40,6 @@ class GameViewController: UIViewController {
         pickerView.dataSource = self
         
         view.addAndCenter(views: [yourWordLabel, yourTeammatesLabel, topLabel, wordTextField, submitButton])
-        setTopLabelTextFor(game: game)
         yourWordLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         yourWordLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
         yourTeammatesLabel.topAnchor.constraint(equalTo: yourWordLabel.bottomAnchor, constant: 50).isActive = true
@@ -54,6 +53,7 @@ class GameViewController: UIViewController {
         submitButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         layoutPickerView()
+        reload(with: game)
     }
     
     func layoutPickerView() {
@@ -99,43 +99,14 @@ class GameViewController: UIViewController {
     
     //Button Presses
     @objc func submitButtonWasPressed(sender : UIButton) {
-        //submit to server, get new game back
-        
-        //create a different state
-        reload(with: testGame2)
-    }
-    
-    func setTopLabelTextFor(game: Game) {
-        if game.guessingPlayer.name == currentPlayer.name {
-            topLabel.text = Strings.yourTurn
+        if game.guessingPlayer.name != currentPlayer.name {
+            showToast(message: Strings.notYourTurn)
         } else {
-            topLabel.text = Strings.waitingForSpace + game.guessingPlayer.name + Strings.spaceToGuess
+            //submit to server, get new game back     //create a different state
+            reload(with: testGame2)
         }
-    }
-    func setTeammatesLabelFor(game: Game) {
-        var myTeam: Team?
-        for team in game.teams {
-            if myTeam != nil {
-                break
-            }
-            for player in team.players {
-                if player.name == currentPlayer.name {
-                    myTeam = team
-                    break
-                }
-            }
-        }
-        guard let t = myTeam else {
-            yourTeammatesLabel.text = "You alone sucka"
-            return
-        }
-        var myTeammatesNames = ""
-        for player in t.players {
-            if player.name != currentPlayer.name {
-                myTeammatesNames = myTeammatesNames + player.name + ", "
-            }
-        }
-        yourTeammatesLabel.text = Strings.yourTeammatesAre + myTeammatesNames
+        
+        reload(with: testGame2)
     }
     
     func reload(with game: Game) {
@@ -174,4 +145,58 @@ extension GameViewController: UIPickerViewDataSource {
         return game.players.count - 1
     }
     
+}
+
+extension GameViewController {
+    func setTopLabelTextFor(game: Game) {
+        if game.guessingPlayer.name == currentPlayer.name {
+            topLabel.text = Strings.yourTurn
+        } else {
+            topLabel.text = Strings.waitingForSpace + game.guessingPlayer.name + Strings.spaceToGuess
+        }
+    }
+    func setTeammatesLabelFor(game: Game) {
+        var myTeam: Team?
+        for team in game.teams {
+            if myTeam != nil {
+                break
+            }
+            for player in team.players {
+                if player.name == currentPlayer.name {
+                    myTeam = team
+                    break
+                }
+            }
+        }
+        guard let t = myTeam else {
+            yourTeammatesLabel.text = "You alone sucka"
+            return
+        }
+        var myTeammatesNames = ""
+        for player in t.players {
+            if player.name != currentPlayer.name {
+                myTeammatesNames = myTeammatesNames + player.name + ", "
+            }
+        }
+        yourTeammatesLabel.text = Strings.yourTeammatesAre + myTeammatesNames
+    }
+}
+
+extension GameViewController {
+    func showToast(message : String) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
 }
