@@ -48,9 +48,9 @@
             filePath = "Kingdom/ViewControllers/Networker.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "addPlayer(name1:)"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "addPlayer(name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -64,10 +64,42 @@
             filePath = "Kingdom/ViewControllers/Networker.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "addPlayer(name1:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "addPlayer(name:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BBFBA8C2-D1CC-44F7-B884-9E64FD890CD2 - ce2162559645bd1a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Kingdom.Networker.addPlayer(name: Swift.String) -&gt; ()"
+                  moduleName = "Kingdom"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haddadnia/Documents/code/Kingdom_TheGame/Kingdom/Kingdom/ViewControllers/Networker.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1579">
+               </Location>
+               <Location
+                  uuid = "BBFBA8C2-D1CC-44F7-B884-9E64FD890CD2 - e5622e222099a51a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static Kingdom.Networker.addPlayer(name: Swift.String) -&gt; ()"
+                  moduleName = "Kingdom"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haddadnia/Documents/code/Kingdom_TheGame/Kingdom/Kingdom/ViewControllers/Networker.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -82,7 +114,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "addPlayer(name:)"
+            landmarkName = "addPlayer(name1:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

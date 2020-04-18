@@ -11,14 +11,14 @@ import Foundation
 class Networker {
 
     //testing with the version which isn't ready for a JSON object
-    static func addPlayer(name: String) {
+    static func addPlayer(name1: String) {
         guard let url = URL(string: "http://localhost:8080/addPlayer1") else {
             assertionFailure("add Player URL is messed up")
             return
         }
         var request = URLRequest(url: url)
         
-        let json: [String: Any] = ["name": name]
+        let json: [String: Any] = ["name": name1]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
 
         request.httpMethod = "POST"
@@ -41,14 +41,15 @@ class Networker {
     }
     
 //fixup
-    static func addPlayer(name1: String) {
+    static func addPlayer(name: String) {
         guard let url = URL(string: "http://localhost:8080/addPlayer") else {
             assertionFailure("add Player URL is messed up")
             return
         }
-        let json: [String: Any] = ["name": "nameo"]
+        let json: [String: Any] = ["name": name]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         var request = URLRequest(url: url)
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "POST"
 
