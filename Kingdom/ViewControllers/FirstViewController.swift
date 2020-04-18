@@ -71,7 +71,8 @@ class FirstViewController: UIViewController {
     @objc func submitButtonWasPressed(sender : UIButton) {
         // submit to server
         // get game back
-        presentLobby(game: testGame1)
+//        presentLobby(game: testGame1)
+        addPlayer()
     }
     
     func presentLobby(game: Game) {
@@ -83,6 +84,12 @@ class FirstViewController: UIViewController {
         let currentPlayer = Player(name: name, word: word)
 
         present(UINavigationController(rootViewController: LobbyViewController(game: game, currentPlayer: currentPlayer, delegate: self)), animated: true) {}
+    }
+    
+    func addPlayer() {
+        if let text = nameTextField.text {
+            Networker.addPlayer(name: text)
+        }
     }
     
     
