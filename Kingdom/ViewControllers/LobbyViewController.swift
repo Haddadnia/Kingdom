@@ -37,21 +37,21 @@ class LobbyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = Strings.lobby
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
         
         view.backgroundColor = UIColor.white
         
-        view.addAndCenter(views: [topLabel, playersLabel, startButton])
+        view.addAndCenter(views: [topLabel, playersLabel, bottomButton])
         topLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
         topLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         playersLabel.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 60).isActive = true
         playersLabel.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
-        startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
-        startButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
-        startButton.isHidden = !isCurrentPlayerTheHost()
+        bottomButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        bottomButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         reloadFrom(game: game)
     }
@@ -60,6 +60,7 @@ class LobbyViewController: UIViewController {
         self.game = game
         setTopLabelText()
         setPlayersLabelText()
+        configureBottomButton()
     }
     
     func showCancelWarning() {
@@ -93,15 +94,14 @@ class LobbyViewController: UIViewController {
         return label
     }()
     
-    var startButton: UIButton = {
+    var bottomButton: UIButton = {
        let button = UIButton()
-        button.setTitle(Strings.startGame, for: .normal)
         button.backgroundColor = UIColor.blue
-        button.addTarget(self, action: #selector(startButtonWasPressed(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(bottomButtonWasPressed(sender:)), for: .touchUpInside)
         return button
     }()
     
-    @objc func startButtonWasPressed(sender : UIButton) {
+    @objc func bottomButtonWasPressed(sender : UIButton) {
         start(game)
     }
     
@@ -124,15 +124,23 @@ extension LobbyViewController {
 //MARK - text setting
 extension LobbyViewController {
     func setTopLabelText() {
-        if (game.host.name == currentPlayer.name) { //replace with a real check for me being host
-            if (game.players.count < 2) {
-                topLabel.text = Strings.playerWarning
+        switch game.gameState {
+        case .lobby:
+            if (game.host.name == currentPlayer.name) { //replace with a real check for me being host
+                if (game.players.count < 2) {
+                    topLabel.text = Strings.playerWarning
+                } else {
+                    topLabel.text = Strings.hostDirections
+                }
             } else {
-                topLabel.text = Strings.hostDirections
+                topLabel.text = Strings.waitingForHost
             }
-        } else {
-            topLabel.text = Strings.waitingForHost
+        case .playing:
+            topLabel.text = Strings.thisGameIsInProgress
+        case .postGame:
+            assertionFailure("what are you doing back here?")
         }
+
     }
     
     func setPlayersLabelText() {
@@ -141,6 +149,19 @@ extension LobbyViewController {
             text = text + player.name + ", "
         }
         playersLabel.text = text
+    }
+    
+    func configureBottomButton() {
+        switch game.gameState {
+            case .lobby:
+                bottomButton.setTitle(Strings.startGame, for: .normal)
+                bottomButton.isHidden = !isCurrentPlayerTheHost()
+            case .playing:
+                bottomButton.setTitle(Strings.rejoinGame, for: .normal)
+        case .postGame:
+            assertionFailure("what are you doing back here?")
+        }
+
     }
 }
 

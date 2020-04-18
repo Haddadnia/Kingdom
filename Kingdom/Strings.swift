@@ -10,7 +10,11 @@ import Foundation
 
 struct Strings {
     
+    static let gameName = "Kingdom"
+    
     //setup / lobby
+    static let lobby = "Lobby"
+    
     static let welcomeToKingdom = "Welcome to Kingdom"
     static let enterYourWord = "Enter your word"
     static let enterYourName = "Enter your name"
@@ -24,11 +28,15 @@ struct Strings {
     static let spaceAreHere = " are here"
     static let hostDirections = "Press start or wait for more players"
     static let startGame = "Start game"
+    static let rejoinGame = "Rejoin game"
+    
     static let submit = "Submit"
     
     static let areYouSureToLeave = "Are you sure you want to leave this game?"
     static let yes = "Yes"
     static let no = "No"
+    
+    static let thisGameIsInProgress = "This game is in progress"
     
     
     //gameplay

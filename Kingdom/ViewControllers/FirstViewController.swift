@@ -38,11 +38,9 @@ class FirstViewController: UIViewController {
     }
         
     // MARK - UI Elements
-    var welcomeLabel: UILabel = {
-        let welcomeLabel = UILabel()
-        welcomeLabel.backgroundColor = UIColor.orange
-        welcomeLabel.text = Strings.welcomeToKingdom
-        return welcomeLabel
+    var welcomeLabel: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "KingdomTitle"))
+        return imageView
     }()
     
     var codeTextField: UITextField = {

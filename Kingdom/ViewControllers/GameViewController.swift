@@ -32,7 +32,8 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        title = Strings.gameName
         view.backgroundColor = UIColor.white
         
         pickerView.showsSelectionIndicator = true
