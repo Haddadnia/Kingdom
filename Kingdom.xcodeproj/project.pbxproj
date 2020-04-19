@@ -123,15 +123,10 @@
 		8F006F5724491BA6002F6869 /* Kingdom */ = {
 			isa = PBXGroup;
 			children = (
-				8F006F8E24492CB3002F6869 /* Strings.swift */,
-				8F006F9224493BF6002F6869 /* UIButtonExtensions.swift */,
-				8F006F5824491BA6002F6869 /* AppDelegate.swift */,
-				8F2C247A244A9C53001F4FE7 /* GlobalTestingConstants.swift */,
-				8FC47A6B244BA1CB00A613A5 /* Networker.swift */,
+				8F99EBA3244CDF8D0080106D /* Global */,
 				8F99EB9E244C8A970080106D /* Models */,
 				8F99EB9D244C8A880080106D /* Extensions */,
 				8F2C2479244A98BD001F4FE7 /* ViewControllers */,
-				8F006F5C24491BA6002F6869 /* SecondViewController.swift */,
 				8F006F5E24491BA6002F6869 /* Main.storyboard */,
 				8F006F6124491BA6002F6869 /* Assets.xcassets */,
 				8F006F6324491BA6002F6869 /* LaunchScreen.storyboard */,
@@ -161,6 +156,7 @@
 		8F2C2479244A98BD001F4FE7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8F006F5C24491BA6002F6869 /* SecondViewController.swift */,
 				8F006F5A24491BA6002F6869 /* FirstViewController.swift */,
 				8F006F9424493DF2002F6869 /* LobbyViewController.swift */,
 				8F2C2477244A8FBB001F4FE7 /* GameViewController.swift */,
@@ -174,6 +170,7 @@
 			children = (
 				8F99EB9B244C8A290080106D /* UIViewControllerExtensions.swift */,
 				8F006F9024493331002F6869 /* UIViewExtensions.swift */,
+				8F006F9224493BF6002F6869 /* UIButtonExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -186,6 +183,17 @@
 				8F006F8A244920D9002F6869 /* Player.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8F99EBA3244CDF8D0080106D /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				8F006F8E24492CB3002F6869 /* Strings.swift */,
+				8F006F5824491BA6002F6869 /* AppDelegate.swift */,
+				8F2C247A244A9C53001F4FE7 /* GlobalTestingConstants.swift */,
+				8FC47A6B244BA1CB00A613A5 /* Networker.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
