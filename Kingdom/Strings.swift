@@ -29,6 +29,8 @@ struct Strings {
     static let hostDirections = "Press start or wait for more players"
     static let startGame = "Start game"
     static let rejoinGame = "Rejoin game"
+    static let youNeedName = "You need a name!"
+    static let youNeedWord = "You need a word!"
     
     static let submit = "Submit"
     

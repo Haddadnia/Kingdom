@@ -69,10 +69,28 @@ class FirstViewController: UIViewController {
     
     //Button Presses
     @objc func submitButtonWasPressed(sender : UIButton) {
+        guard let name = nameTextField.text, !name.isEmpty else {
+            showToast(Strings.youNeedName)
+            return
+        }
+        guard let word = wordTextField.text, !word.isEmpty else {
+            showToast(Strings.youNeedWord)
+            return
+        }
+        
+        let player = Player(name: name, word: word)
+        
+        Networker.addPlayer(player, toGameCode: codeTextField.text) { game in
+            if let game = game {
+                //update stuff
+            } else {
+                //theres a problem
+            }
+        }
+        
         // submit to server
         // get game back
 //        presentLobby(game: testGame1)
-        addPlayer()
     }
     
     func presentLobby(game: Game) {
@@ -84,12 +102,6 @@ class FirstViewController: UIViewController {
         let currentPlayer = Player(name: name, word: word)
 
         present(UINavigationController(rootViewController: LobbyViewController(game: game, currentPlayer: currentPlayer, delegate: self)), animated: true) {}
-    }
-    
-    func addPlayer() {
-        if let text = nameTextField.text {
-            Networker.addPlayer(name: text)
-        }
     }
     
     

@@ -25,6 +25,7 @@
 		8F2C2478244A8FBB001F4FE7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C2477244A8FBB001F4FE7 /* GameViewController.swift */; };
 		8F2C247B244A9C53001F4FE7 /* GlobalTestingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C247A244A9C53001F4FE7 /* GlobalTestingConstants.swift */; };
 		8F2C247D244AA00D001F4FE7 /* GuessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C247C244AA00D001F4FE7 /* GuessingView.swift */; };
+		8F99EB9C244C8A290080106D /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F99EB9B244C8A290080106D /* UIViewControllerExtensions.swift */; };
 		8FC47A6C244BA1CB00A613A5 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC47A6B244BA1CB00A613A5 /* Networker.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		8F2C2477244A8FBB001F4FE7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8F2C247A244A9C53001F4FE7 /* GlobalTestingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTestingConstants.swift; sourceTree = "<group>"; };
 		8F2C247C244AA00D001F4FE7 /* GuessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessingView.swift; sourceTree = "<group>"; };
+		8F99EB9B244C8A290080106D /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		8FC47A6B244BA1CB00A613A5 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,11 +127,10 @@
 				8F006F9224493BF6002F6869 /* UIButtonExtensions.swift */,
 				8F006F5824491BA6002F6869 /* AppDelegate.swift */,
 				8F2C247A244A9C53001F4FE7 /* GlobalTestingConstants.swift */,
+				8FC47A6B244BA1CB00A613A5 /* Networker.swift */,
+				8F99EB9E244C8A970080106D /* Models */,
+				8F99EB9D244C8A880080106D /* Extensions */,
 				8F2C2479244A98BD001F4FE7 /* ViewControllers */,
-				8F006F9024493331002F6869 /* UIViewExtensions.swift */,
-				8F006F8824491EF4002F6869 /* Game.swift */,
-				8F006F8C244921EF002F6869 /* Team.swift */,
-				8F006F8A244920D9002F6869 /* Player.swift */,
 				8F006F5C24491BA6002F6869 /* SecondViewController.swift */,
 				8F006F5E24491BA6002F6869 /* Main.storyboard */,
 				8F006F6124491BA6002F6869 /* Assets.xcassets */,
@@ -161,12 +162,30 @@
 			isa = PBXGroup;
 			children = (
 				8F006F5A24491BA6002F6869 /* FirstViewController.swift */,
-				8FC47A6B244BA1CB00A613A5 /* Networker.swift */,
 				8F006F9424493DF2002F6869 /* LobbyViewController.swift */,
 				8F2C2477244A8FBB001F4FE7 /* GameViewController.swift */,
 				8F2C247C244AA00D001F4FE7 /* GuessingView.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8F99EB9D244C8A880080106D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8F99EB9B244C8A290080106D /* UIViewControllerExtensions.swift */,
+				8F006F9024493331002F6869 /* UIViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8F99EB9E244C8A970080106D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8F006F8824491EF4002F6869 /* Game.swift */,
+				8F006F8C244921EF002F6869 /* Team.swift */,
+				8F006F8A244920D9002F6869 /* Player.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +326,7 @@
 				8F006F9124493331002F6869 /* UIViewExtensions.swift in Sources */,
 				8F2C2478244A8FBB001F4FE7 /* GameViewController.swift in Sources */,
 				8F006F5924491BA6002F6869 /* AppDelegate.swift in Sources */,
+				8F99EB9C244C8A290080106D /* UIViewControllerExtensions.swift in Sources */,
 				8F006F5B24491BA6002F6869 /* FirstViewController.swift in Sources */,
 				8F006F8B244920D9002F6869 /* Player.swift in Sources */,
 				8F2C247D244AA00D001F4FE7 /* GuessingView.swift in Sources */,

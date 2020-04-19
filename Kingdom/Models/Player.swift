@@ -17,4 +17,5 @@ class Player {
     let teammates: [Player] = []
     let leader: Player? = nil
     var word: String
+    var playerID: String?
 }
